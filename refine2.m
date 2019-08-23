@@ -781,7 +781,10 @@ function [vert,conn,tria,tnum,iter] = ...
         
         vidx = ...
        [vidx; (nold:nnew)'] ;
-                        
+
+        % wjp: in case the new mesh has fewer nodes than old one
+        vidx(vidx > nnew) = [];
+   
         tcpu.dtri = ...
             tcpu.dtri + toc(ttic) ;
 
