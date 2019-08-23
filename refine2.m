@@ -1110,6 +1110,8 @@ function [vert,conn,tria,tnum,iter] = ...
         nold = size(vert,1);
         vert = [vert; new1(:,1:2)];
         vert = [vert; new2(:,1:2)];
+        % make sure vertices are unique
+        vert = unique(vert,'rows','stable');
         nnew = size(vert,1);
 
         if (nnew == nold), break; end   %- we *must* be done
